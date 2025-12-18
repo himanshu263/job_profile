@@ -4,12 +4,15 @@ A simple web application built with Flask and SQLite to manage jobs, employers, 
 
 Features
 	•	User Roles: Admin, Employer, Jobseeker
+	
 	•	Admin:
 	•	View dashboard with stats (jobs, employers, jobseekers)
 	•	Manage jobs, employers, and jobseekers
+	
 	•	Employer:
 	•	Post new jobs
 	•	View job applications from jobseekers
+	
 	•	Jobseeker:
 	•	Browse available jobs
 	•	Apply for jobs
@@ -17,6 +20,7 @@ Features
 	•	Update profile
 
 Tech Stack
+
 	•	Backend: Python Flask
 	•	Database: SQLite
 	•	Frontend: Bootstrap 5, Bootstrap Icons
