@@ -28,32 +28,33 @@ Tech Stack
 Installation
 	1.	Clone the repository
 
-git clone <repo-url>
-cd job-portal
+	    git clone <repo-url>
+	    
+		cd job-portal
+
+2.	Create a virtual environment and activate it
+
+		python -m venv venv
+		# Linux/Mac
+		source venv/bin/activate
+		# Windows
+		venv\Scripts\activate
+		
+
+3.	Install dependencies
+
+    	pip install -r requirements.txt
 
 
-	2.	Create a virtual environment and activate it
-
-python -m venv venv
-# Linux/Mac
-source venv/bin/activate
-# Windows
-venv\Scripts\activate
+4.	Run the app
 
 
-	3.	Install dependencies
-
-pip install -r requirements.txt
+  		python app.py
 
 
-	4.	Run the app
+6.	Open in browser
 
-python app.py
-
-
-	5.	Open in browser
-
-http://127.0.0.1:5000/
+    	http://127.0.0.1:5000/
 
 
 
