@@ -1,6 +1,6 @@
 # Job Portal
 
-A simple web application built with Flask and SQLite to manage jobs, employers, and jobseekers.
+A simple web application built with Flask and SQLite to manage jobs, employers, and job seekers.
 
 Features
 	•	User Roles: Admin, Employer, Jobseeker
