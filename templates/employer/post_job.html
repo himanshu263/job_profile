@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Employer{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+
+  <div class="col-md-6">
+    <div class="card shadow-sm p-4 h-100">
+      <h5 class="mb-3 fw-bold">Post New Job</h5>
+      <form method="post">
+        <div class="mb-3">
+          <label class="form-label">Job Title</label>
+          <input type="text" name="title" class="form-control" placeholder="Enter job title" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Job Description</label>
+          <textarea name="description" class="form-control" rows="4" placeholder="Enter job description" required></textarea>
+        </div>
+        <button class="btn btn-dark w-100">Post Job</button>
+      </form>
+    </div>
+  </div>
+
+
+</div>
+{% endblock %}

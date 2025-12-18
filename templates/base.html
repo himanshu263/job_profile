@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body { display: flex; min-height: 100vh; overflow-x: hidden; }
+    .sidebar { width: 220px; background: #343a40; color: #fff; transition: width 0.2s; min-height: 100vh; padding-top: 1rem; }
+    .sidebar.collapsed { width: 60px; }
+    .sidebar .nav-link { color: #fff; white-space: nowrap; }
+    .sidebar .nav-link:hover { background-color: #495057; }
+    .sidebar .nav-link i { font-size: 1.2rem; }
+    .sidebar.collapsed .nav-label { display: none; }
+    .content { flex: 1; padding: 20px; }
+    footer { background: #f8f9fa; padding: 10px 20px; text-align: center; }
+    .sidebar:hover { width: 220px !important; }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar d-flex flex-column">
+  <a href="/" class="d-flex align-items-center mb-3 text-white text-decoration-none ps-3">
+    <i class="bi bi-briefcase me-2 fs-4"></i>
+    <span class="fs-5 fw-bold nav-label">Job Portal</span>
+  </a>
+  <ul class="nav nav-pills flex-column mb-auto">
+    {% if session.get('user') %}
+      {% if session.user[4] == 'admin' %}
+      <li><a href="/admin" class="nav-link"><i class="bi bi-speedometer2"></i> <span class="nav-label ms-2">Dashboard</span></a></li>
+      <li><a href="/admin/manage/jobs" class="nav-link"><i class="bi bi-briefcase-fill"></i> <span class="nav-label ms-2">Manage Jobs</span></a></li>
+      <li><a href="/admin/manage/employers" class="nav-link"><i class="bi bi-building"></i> <span class="nav-label ms-2">Manage Employers</span></a></li>
+      <li><a href="/admin/manage/jobseekers" class="nav-link"><i class="bi bi-people-fill"></i> <span class="nav-label ms-2">Manage Jobseekers</span></a></li>
+
+      {% elif session.user[4] == 'employer' %}
+        <li><a href="/employer" class="nav-link"><i class="bi bi-building"></i> <span class="nav-label ms-2">Dashboard</span></a></li>
+        <li><a href="/post-job" class="nav-link"><i class="bi bi-check2-circle"></i> <span class="nav-label ms-2">Post job</span></a></li>
+      {% elif session.user[4] == 'jobseeker' %}
+        <li><a href="/jobseeker" class="nav-link"><i class="bi bi-people-fill"></i> <span class="nav-label ms-2">Jobs</span></a></li>
+        <li><a href="/applied" class="nav-link"><i class="bi bi-check2-circle"></i> <span class="nav-label ms-2">Applied Jobs</span></a></li>
+        <li><a href="/profile" class="nav-link"><i class="bi bi-person-circle"></i> <span class="nav-label ms-2">Profile</span></a></li>
+      {% endif %}
+      <li><a href="/logout" class="nav-link text-danger"><i class="bi bi-box-arrow-right"></i> <span class="nav-label ms-2">Logout</span></a></li>
+    {% else %}
+      <li><a href="/" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> <span class="nav-label ms-2">Login</span></a></li>
+      <li><a href="/register" class="nav-link"><i class="bi bi-person-plus"></i> <span class="nav-label ms-2">Register</span></a></li>
+    {% endif %}
+  </ul>
+</nav>
+
+<div class="content">
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container-fluid d-flex justify-content-between">
+      <span class="navbar-brand mb-0 h1">{% block title %}Job Portal{% endblock %}</span>
+    </div>
+  </nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="container mb-3">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

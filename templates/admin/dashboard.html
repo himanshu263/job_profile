@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+  <h3 class="fw-bold">Admin Dashboard</h3>
+  <p class="text-muted">Overview of platform activity</p>
+</div>
+
+<div class="row g-4 mb-4">
+  <!-- Total Jobs -->
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 text-center text-white bg-primary">
+      <div class="card-body">
+        <i class="bi bi-briefcase-fill display-4 mb-2"></i>
+        <h6>Total Jobs</h6>
+        <h2 class="fw-bold">{{ stats.jobs }}</h2>
+        <small>
+          Daily: {{ stats.jobs_daily }} | Weekly: {{ stats.jobs_weekly }}<br>
+          Monthly: {{ stats.jobs_monthly }} | Yearly: {{ stats.jobs_yearly }}
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employers -->
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 text-center text-white bg-success">
+      <div class="card-body">
+        <i class="bi bi-building display-4 mb-2"></i>
+        <h6>Employers</h6>
+        <h2 class="fw-bold">{{ stats.employers }}</h2>
+        <small>
+          Daily: {{ stats.employers_daily }} | Weekly: {{ stats.employers_weekly }}<br>
+          Monthly: {{ stats.employers_monthly }} | Yearly: {{ stats.employers_yearly }}
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Jobseekers -->
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 text-center text-white bg-warning">
+      <div class="card-body">
+        <i class="bi bi-people-fill display-4 mb-2"></i>
+        <h6>Jobseekers</h6>
+        <h2 class="fw-bold">{{ stats.jobseekers }}</h2>
+        <small>
+          Daily: {{ stats.jobseekers_daily }} | Weekly: {{ stats.jobseekers_weekly }}<br>
+          Monthly: {{ stats.jobseekers_monthly }} | Yearly: {{ stats.jobseekers_yearly }}
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-md-4">
+    <a href="/admin/manage/jobs" class="text-decoration-none">
+      <div class="card shadow-sm border-0 text-center p-4">
+        <i class="bi bi-briefcase display-4 mb-2"></i>
+        <h6 class="fw-bold">Manage Jobs</h6>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-4">
+    <a href="/admin/manage/employers" class="text-decoration-none">
+      <div class="card shadow-sm border-0 text-center p-4">
+        <i class="bi bi-building display-4 mb-2"></i>
+        <h6 class="fw-bold">Manage Employers</h6>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-4">
+    <a href="/admin/manage/jobseekers" class="text-decoration-none">
+      <div class="card shadow-sm border-0 text-center p-4">
+        <i class="bi bi-people display-4 mb-2"></i>
+        <h6 class="fw-bold">Manage Jobseekers</h6>
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}

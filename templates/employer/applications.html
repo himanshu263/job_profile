@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Job Applications{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+  <h3 class="fw-bold">Applications for: {{ job[0] if job else "Job" }}</h3>
+  <p class="text-muted">List of jobseekers who applied to this job</p>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Applied At</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for app in data %}
+        <tr>
+          <td>{{ app[1] }}</td>
+          <td>{{ app[2] }}</td>
+          <td>{{ app[3] }}</td>
+          <td><span class="badge bg-primary">Applied</span></td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="4" class="text-center text-muted">No applications yet</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

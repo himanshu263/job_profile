@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Applied Jobs{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+  <h3 class="fw-bold">Applied Jobs</h3>
+  <p class="text-muted">Jobs you have applied for</p>
+</div>
+
+{% if data %}
+<div class="row g-4">
+  {% for job in data %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="card-title fw-bold">{{ job[0] }}</h5>
+            <p class="card-text text-muted">{{ job[1] }}</p>
+            <small class="text-secondary">Applied on: {{ job[2] }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% else %}
+  <p class="text-center text-muted fs-5 mt-5">You haven't applied for any jobs yet.</p>
+{% endif %}
+{% endblock %}

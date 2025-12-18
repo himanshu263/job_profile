@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Manage Employers{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h3>Manage Employers</h3>
+</div>
+
+<table class="table table-striped shadow-sm">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Registered At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for employer in employers %}
+    <tr>
+      <td>{{ employer[0] }}</td>
+      <td>{{ employer[1] }}</td>
+      <td>{{ employer[2] }}</td>
+      <td>{{ employer[3] or "N/A" }}</td>
+      <td>
+        <a href="/admin/manage/employers/edit/{{ employer[0] }}" class="btn btn-sm btn-warning">Edit</a>
+        <a href="/admin/manage/employers/delete/{{ employer[0] }}" class="btn btn-sm btn-danger"
+           onclick="return confirm('Are you sure?')">Delete</a>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="5" class="text-center text-muted">No employers found.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
